@@ -8,7 +8,7 @@ ENV GRAFANA_VERSION="4.1.1" \
     GRAFANA_BUILD="1484211277"
 
 ADD root /
-
+ADD custom.ini /etc/grafana/custom.ini
 
 RUN yum -y install https://grafanarel.s3.amazonaws.com/builds/grafana-"$GRAFANA_VERSION"-"$GRAFANA_BUILD".x86_64.rpm \
     && yum clean all
@@ -19,9 +19,8 @@ RUN /usr/bin/fix-permissions /usr/share/grafana \
     && /usr/bin/fix-permissions /var/lib/grafana \
     && /usr/bin/fix-permissions /var/log/grafana 
 
-ADD custom.ini /etc/grafana/custom.ini
+
 
 WORKDIR /usr/share/grafana
 ENTRYPOINT ["./run.sh"]
 
-CMD [ "-config.file=/etc/grafana/custom.ini" ]

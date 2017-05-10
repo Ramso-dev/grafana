@@ -10,6 +10,7 @@ fi
 source /etc/sysconfig/grafana-server
 cd /usr/share/grafana
 /usr/sbin/grafana-server \
+--config=/etc/grafana/custom.ini \
 --pidfile=${PID_FILE} \
 cfg:default.paths.logs=${LOG_DIR} \
 cfg:default.paths.data=${DATA_DIR} \
