@@ -23,4 +23,4 @@ RUN /usr/bin/fix-permissions /usr/share/grafana \
 WORKDIR /usr/share/grafana
 ENTRYPOINT ["./run.sh"]
 
-CMD --config /etc/grafana/custom.ini
+CMD [ "-config.file=/etc/grafana/custom.ini" ]
